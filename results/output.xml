@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.11.2 on linux)" generated="2025-07-15T19:59:48.921686" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="/home/user/robot-project/tests">
+<suite id="s1-s1" name="Login Tests" source="/home/user/robot-project/tests/login_tests.robot">
+<test id="s1-s1-t1" name="Valid Login Test" line="8">
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-15T19:59:49.018548" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-15T19:59:49.059626" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-15T19:59:49.018348" elapsed="6.940503"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-15T19:59:55.959467" elapsed="0.007478"/>
+</kw>
+<status status="PASS" start="2025-07-15T19:59:49.017835" elapsed="6.949455"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-15T19:59:55.969510" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-15T19:59:55.968914" elapsed="0.103450"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-15T19:59:56.073042" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-15T19:59:56.072672" elapsed="0.020454"/>
+</kw>
+<arg>tomsmith</arg>
+<arg>SuperSecretPassword!</arg>
+<status status="PASS" start="2025-07-15T19:59:55.968277" elapsed="0.125060"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-15T19:59:56.094204" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-15T19:59:56.093968" elapsed="0.440308"/>
+</kw>
+<status status="PASS" start="2025-07-15T19:59:56.093630" elapsed="0.441123"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-15T19:59:56.546150" level="INFO">Current page contains text 'You logged into a secure area!'.</msg>
+<arg>You logged into a secure area!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-15T19:59:56.535285" elapsed="0.010978"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-15T19:59:56.546484" elapsed="0.662726"/>
+</kw>
+<doc>Verifies REQ-LOGIN-001: Successful login with valid credentials.</doc>
+<tag>login</tag>
+<tag>REQ-LOGIN-001</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-07-15T19:59:49.017262" elapsed="8.192279"/>
+</test>
+<status status="PASS" start="2025-07-15T19:59:48.934029" elapsed="8.275927"/>
+</suite>
+<status status="PASS" start="2025-07-15T19:59:48.922429" elapsed="8.287875"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">login</stat>
+<stat pass="1" fail="0" skip="0">REQ-LOGIN-001</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="1" fail="0" skip="0">Tests</stat>
+<stat name="Login Tests" id="s1-s1" pass="1" fail="0" skip="0">Tests.Login Tests</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-07-15T19:59:49.059626" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+</errors>
+</robot>
