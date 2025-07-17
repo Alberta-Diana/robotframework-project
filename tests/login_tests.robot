@@ -13,3 +13,12 @@ Valid Login Test
 	Click Login Button
 	Page Should Contain 	You logged into a secure area!
 	Close Browser
+
+Invalid Login Test - Empty Username
+	[Documentation]		Verifies REQ-LOGIN-002: Login fails if username is empty.
+	[Tags]		REQ-LOGIN-002		negative	login
+	Open Browser to Login Page
+	Input Username and Password		${EMPTY}	SuperSecretPassword!
+	Click Login Button
+	Page Should Contain		Your username is invalid!
+	Close Browser
