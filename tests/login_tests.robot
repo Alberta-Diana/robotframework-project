@@ -22,3 +22,32 @@ Invalid Login Test - Empty Username
 	Click Login Button
 	Page Should Contain		Your username is invalid!
 	Close Browser
+
+Invalid Login Test - Wrong password
+	[Documentation]		Verifies REQ-LOGIN-003: Login fails if password is incorrect
+	[Tags]		REQ-LOGIN-003		negative	login
+	Open Browser To Login Page
+	Input Username and Password		tomsmith	WrongPassword123
+	Click Login Button
+	Page Should Contain 	Your username is invalid!
+	Close Browser
+
+Invalid Login Test - Empty password
+	[Documentation]		Verifies REQ-LOGIN-004: Login fails if password is empty
+	[Tags] 		REQ-LOGIN-004 		negative 	login
+	Open Browser To Login Page
+	Input Username and Password		tomsmith 	${EMPTY}
+	Click Login Button
+	Page Should Contain 	Your username is invalid!
+	Close Browser
+
+Invalid Login Test - Empty Both Fields
+	[Documentation]		Verifies REQ-LOGIN-005: Login fails if both username and password are empty
+	[Tags]		REQ-LOGIN-005 		negative 	login
+	Open Browser To Login Page
+	Input Username and Password 	${EMPTY}	${EMPTY}
+	Click Login Button
+	Page Should Contain 	Your username is invalid!
+	Close Browser
+
+
