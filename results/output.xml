@@ -1,337 +1,930 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.11.2 on linux)" generated="2025-07-17T15:15:34.821023" rpa="false" schemaversion="5">
+<robot generator="Robot 7.3.2 (Python 3.11.2 on linux)" generated="2025-07-18T13:15:57.034707" rpa="false" schemaversion="5">
 <suite id="s1" name="Tests" source="/home/user/robot-project/tests">
-<suite id="s1-s1" name="Login Tests" source="/home/user/robot-project/tests/login_tests.robot">
-<test id="s1-s1-t1" name="Valid Login Test" line="8">
+<suite id="s1-s1" name="Data Driven Login" source="/home/user/robot-project/tests/data_driven_login.robot">
+<test id="s1-s1-t1" name="Login Test with Multple Credentials" line="10">
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-18T13:15:57.147715" level="INFO">Testing with: tomsmith / SuperSecretPassword!</msg>
+<arg>Testing with: ${username} / ${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-18T13:15:57.147541" elapsed="0.000268"/>
+</kw>
 <kw name="Open Browser to Login Page" owner="browser_keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:34.932348" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<msg time="2025-07-17T15:15:35.505499" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:15:57.148484" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:15:57.190887" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-17T15:15:34.932114" elapsed="9.859470"/>
+<status status="PASS" start="2025-07-18T13:15:57.148295" elapsed="15.573806"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-17T15:15:44.792316" elapsed="0.013604"/>
+<status status="PASS" start="2025-07-18T13:16:12.722306" elapsed="0.279539"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:15:34.931569" elapsed="9.874545"/>
+<status status="PASS" start="2025-07-18T13:15:57.148047" elapsed="15.853968"/>
 </kw>
 <kw name="Input Username And Password" owner="browser_keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:44.808415" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<msg time="2025-07-18T13:16:13.003210" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
 <arg>id=username</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:15:44.807208" elapsed="0.092139"/>
+<status status="PASS" start="2025-07-18T13:16:13.002665" elapsed="0.084226"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:44.899927" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<msg time="2025-07-18T13:16:13.087526" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
 <arg>id=password</arg>
 <arg>${password}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:15:44.899602" elapsed="0.025153"/>
+<status status="PASS" start="2025-07-18T13:16:13.087191" elapsed="0.023735"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-07-18T13:16:13.002216" elapsed="0.108859"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:13.112073" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:13.111891" elapsed="2.247607"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:13.111377" elapsed="2.248271"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:15.370845" level="INFO">Current page contains text 'You logged into a secure area!'.</msg>
+<arg>You logged into a secure area!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-18T13:16:15.360303" elapsed="0.010647"/>
+</kw>
+<arg>'${expected}' == 'success'</arg>
+<arg>Page Should Contain</arg>
+<arg>You logged into a secure area!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:15.359854" elapsed="0.011166"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'failed'</arg>
+<arg>Page Should Contain</arg>
+<arg>Your username is invalid!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:15.371162" elapsed="0.000205"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:16:15.372412" elapsed="0.702448"/>
+</kw>
+<var name="${username}">tomsmith</var>
+<var name="${password}">SuperSecretPassword!</var>
+<var name="${expected}">success</var>
+<status status="PASS" start="2025-07-18T13:15:57.147051" elapsed="18.928021"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-18T13:16:16.076676" level="INFO">Testing with: tomsmith / wrongpassword</msg>
+<arg>Testing with: ${username} / ${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-18T13:16:16.076073" elapsed="0.000769"/>
+</kw>
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:16.080747" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:16:16.134152" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:16:16.079614" elapsed="6.661094"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:16:22.740919" elapsed="0.275456"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:16.077325" elapsed="6.939202"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:23.017303" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:23.017115" elapsed="0.071816"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:23.089550" level="INFO">Typing text 'wrongpassword' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:23.089196" elapsed="0.023124"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-07-18T13:16:23.016774" elapsed="0.095701"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:23.113486" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:23.113137" elapsed="0.691790"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:23.112795" elapsed="0.692322"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'success'</arg>
+<arg>Page Should Contain</arg>
+<arg>You logged into a secure area!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:23.805285" elapsed="0.000200"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'failed'</arg>
+<arg>Page Should Contain</arg>
+<arg>Your username is invalid!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:23.805586" elapsed="0.000117"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:16:23.805775" elapsed="0.732255"/>
+</kw>
+<var name="${username}">tomsmith</var>
+<var name="${password}">wrongpassword</var>
+<var name="${expected}">failure</var>
+<status status="PASS" start="2025-07-18T13:16:16.075634" elapsed="8.462545"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-18T13:16:24.538701" level="INFO">Testing with: invaliduser / SuperSecretPassword!</msg>
+<arg>Testing with: ${username} / ${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-18T13:16:24.538534" elapsed="0.000207"/>
+</kw>
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:24.539272" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:16:24.585493" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:16:24.539107" elapsed="8.346600"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:16:32.885894" elapsed="0.262857"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:24.538888" elapsed="8.610054"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:33.150004" level="INFO">Typing text 'invaliduser' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:33.149809" elapsed="0.079191"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:33.230194" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:33.229554" elapsed="0.021101"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-07-18T13:16:33.149244" elapsed="0.101586"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:33.251757" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:33.251438" elapsed="0.794336"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:33.251018" elapsed="0.794944"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'success'</arg>
+<arg>Page Should Contain</arg>
+<arg>You logged into a secure area!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:34.046211" elapsed="0.000300"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'failed'</arg>
+<arg>Page Should Contain</arg>
+<arg>Your username is invalid!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:34.046677" elapsed="0.000181"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:16:34.046981" elapsed="2.781781"/>
+</kw>
+<var name="${username}">invaliduser</var>
+<var name="${password}">SuperSecretPassword!</var>
+<var name="${expected}">failure</var>
+<status status="PASS" start="2025-07-18T13:16:24.538412" elapsed="12.290433"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-18T13:16:36.829371" level="INFO">Testing with:  / SuperSecretPassword!</msg>
+<arg>Testing with: ${username} / ${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-18T13:16:36.829192" elapsed="0.000222"/>
+</kw>
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:36.829976" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:16:36.874006" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:16:36.829806" elapsed="9.765133"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:16:46.595143" elapsed="0.268800"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:36.829565" elapsed="10.034527"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:46.865008" level="INFO">Typing text '' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:46.864700" elapsed="0.067451"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:46.932652" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:46.932367" elapsed="0.033649"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-07-18T13:16:46.864307" elapsed="0.101863"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:46.967195" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:46.966703" elapsed="0.750504"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:46.966394" elapsed="0.751572"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'success'</arg>
+<arg>Page Should Contain</arg>
+<arg>You logged into a secure area!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:47.718792" elapsed="0.000905"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'failed'</arg>
+<arg>Page Should Contain</arg>
+<arg>Your username is invalid!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:47.720041" elapsed="0.000239"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:16:47.720380" elapsed="0.741082"/>
+</kw>
+<var name="${username}"/>
+<var name="${password}">SuperSecretPassword!</var>
+<var name="${expected}">failure</var>
+<status status="PASS" start="2025-07-18T13:16:36.829054" elapsed="11.632499"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-07-18T13:16:48.462077" level="INFO">Testing with: tomsmith / </msg>
+<arg>Testing with: ${username} / ${password}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-07-18T13:16:48.461875" elapsed="0.000353"/>
+</kw>
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:48.463046" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:16:48.517681" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:16:48.462834" elapsed="10.322973"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:16:58.785962" elapsed="0.286041"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:48.462564" elapsed="10.609622"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:59.073094" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:59.072842" elapsed="0.100850"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:59.174380" level="INFO">Typing text '' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:59.174009" elapsed="0.020453"/>
+</kw>
+<arg>${username}</arg>
+<arg>${password}</arg>
+<status status="PASS" start="2025-07-18T13:16:59.072460" elapsed="0.122268"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:16:59.195591" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:16:59.195310" elapsed="0.560840"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:16:59.194992" elapsed="0.561303"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'success'</arg>
+<arg>Page Should Contain</arg>
+<arg>You logged into a secure area!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:59.756456" elapsed="0.000247"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${expected}' == 'failed'</arg>
+<arg>Page Should Contain</arg>
+<arg>Your username is invalid!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-07-18T13:16:59.756930" elapsed="0.000206"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:16:59.757277" elapsed="3.016756"/>
+</kw>
+<var name="${username}">tomsmith</var>
+<var name="${password}"/>
+<var name="${expected}">failure</var>
+<status status="PASS" start="2025-07-18T13:16:48.461747" elapsed="14.312404"/>
+</iter>
+<var>${username}</var>
+<var>${password}</var>
+<var>${expected}</var>
+<value>@{LOGIN TEST SETS}</value>
+<status status="PASS" start="2025-07-18T13:15:57.146849" elapsed="65.627516"/>
+</for>
+<status status="PASS" start="2025-07-18T13:15:57.146588" elapsed="65.628315"/>
+</test>
+<status status="PASS" start="2025-07-18T13:15:57.048057" elapsed="65.727511"/>
+</suite>
+<suite id="s1-s2" name="Login Tests" source="/home/user/robot-project/tests/login_tests.robot">
+<test id="s1-s2-t1" name="Valid Login Test" line="8">
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:17:02.782247" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:17:02.838422" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:17:02.781740" elapsed="10.178480"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:17:12.960566" elapsed="0.294660"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:17:02.781140" elapsed="10.474201"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:17:13.256126" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:17:13.255945" elapsed="0.093296"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:17:13.349689" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:17:13.349434" elapsed="0.024598"/>
 </kw>
 <arg>tomsmith</arg>
 <arg>SuperSecretPassword!</arg>
-<status status="PASS" start="2025-07-17T15:15:44.806579" elapsed="0.118382"/>
+<status status="PASS" start="2025-07-18T13:17:13.255667" elapsed="0.118491"/>
 </kw>
 <kw name="Click Login Button" owner="browser_keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:44.925914" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<msg time="2025-07-18T13:17:13.374880" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
 <arg>xpath=//button[@type='submit']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:15:44.925673" elapsed="0.486019"/>
+<status status="PASS" start="2025-07-18T13:17:13.374708" elapsed="0.576627"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:15:44.925326" elapsed="0.486605"/>
+<status status="PASS" start="2025-07-18T13:17:13.374401" elapsed="0.577051"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:45.422341" level="INFO">Current page contains text 'You logged into a secure area!'.</msg>
+<msg time="2025-07-18T13:17:13.962304" level="INFO">Current page contains text 'You logged into a secure area!'.</msg>
 <arg>You logged into a secure area!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-07-17T15:15:45.412638" elapsed="0.009859"/>
+<status status="PASS" start="2025-07-18T13:17:13.951652" elapsed="0.010786"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-17T15:15:45.422713" elapsed="0.695489"/>
+<status status="PASS" start="2025-07-18T13:17:13.962740" elapsed="0.787895"/>
 </kw>
 <doc>Verifies REQ-LOGIN-001: Successful login with valid credentials.</doc>
 <tag>login</tag>
+<tag>positive</tag>
 <tag>REQ-LOGIN-001</tag>
 <tag>smoke</tag>
-<status status="PASS" start="2025-07-17T15:15:34.930937" elapsed="11.187837"/>
+<status status="PASS" start="2025-07-18T13:17:02.780481" elapsed="11.970436"/>
 </test>
-<test id="s1-s1-t2" name="Invalid Login Test - Empty Username" line="17">
+<test id="s1-s2-t2" name="Invalid Login Test - Empty Username" line="17">
 <kw name="Open Browser to Login Page" owner="browser_keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:46.119924" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<msg time="2025-07-17T15:15:46.164979" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:14.752278" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:17:14.796621" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-17T15:15:46.119688" elapsed="10.428371"/>
+<status status="PASS" start="2025-07-18T13:17:14.752103" elapsed="10.736685"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-17T15:15:56.548265" elapsed="0.280645"/>
+<status status="PASS" start="2025-07-18T13:17:25.489063" elapsed="0.286846"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:15:46.119454" elapsed="10.709609"/>
+<status status="PASS" start="2025-07-18T13:17:14.751864" elapsed="11.024182"/>
 </kw>
 <kw name="Input Username And Password" owner="browser_keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:56.829913" level="INFO">Typing text '' into text field 'id=username'.</msg>
+<msg time="2025-07-18T13:17:25.777175" level="INFO">Typing text '' into text field 'id=username'.</msg>
 <arg>id=username</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:15:56.829722" elapsed="0.072372"/>
+<status status="PASS" start="2025-07-18T13:17:25.776883" elapsed="0.073761"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:56.902567" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<msg time="2025-07-18T13:17:25.851032" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
 <arg>id=password</arg>
 <arg>${password}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:15:56.902293" elapsed="0.041663"/>
+<status status="PASS" start="2025-07-18T13:17:25.850811" elapsed="0.043101"/>
 </kw>
 <arg>${EMPTY}</arg>
 <arg>SuperSecretPassword!</arg>
-<status status="PASS" start="2025-07-17T15:15:56.829396" elapsed="0.115092"/>
+<status status="PASS" start="2025-07-18T13:17:25.776391" elapsed="0.117663"/>
 </kw>
 <kw name="Click Login Button" owner="browser_keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:56.946067" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<msg time="2025-07-18T13:17:25.894875" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
 <arg>xpath=//button[@type='submit']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:15:56.945647" elapsed="0.659108"/>
+<status status="PASS" start="2025-07-18T13:17:25.894602" elapsed="0.911235"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:15:56.945037" elapsed="0.659918"/>
+<status status="PASS" start="2025-07-18T13:17:25.894315" elapsed="0.912317"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:57.629596" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
+<msg time="2025-07-18T13:17:26.815618" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
 <arg>Your username is invalid!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-07-17T15:15:57.605255" elapsed="0.024505"/>
+<status status="PASS" start="2025-07-18T13:17:26.807035" elapsed="0.008714"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-17T15:15:57.630289" elapsed="0.789377"/>
+<status status="PASS" start="2025-07-18T13:17:26.816045" elapsed="1.011575"/>
 </kw>
 <doc>Verifies REQ-LOGIN-002: Login fails if username is empty.</doc>
 <tag>login</tag>
 <tag>negative</tag>
 <tag>REQ-LOGIN-002</tag>
-<status status="PASS" start="2025-07-17T15:15:46.119095" elapsed="12.301011"/>
+<status status="PASS" start="2025-07-18T13:17:14.751159" elapsed="13.076823"/>
 </test>
-<test id="s1-s1-t3" name="Invalid Login Test - Wrong password" line="26">
+<test id="s1-s2-t3" name="Invalid Login Test - Wrong password" line="26">
 <kw name="Open Browser to Login Page" owner="browser_keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:15:58.421720" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<msg time="2025-07-17T15:15:58.464530" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:27.829376" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:17:27.895139" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-17T15:15:58.421496" elapsed="9.195793"/>
+<status status="PASS" start="2025-07-18T13:17:27.829104" elapsed="8.370968"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-17T15:16:07.617588" elapsed="0.303635"/>
+<status status="PASS" start="2025-07-18T13:17:36.200261" elapsed="0.288713"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:15:58.421231" elapsed="9.500153"/>
+<status status="PASS" start="2025-07-18T13:17:27.828781" elapsed="8.660359"/>
 </kw>
 <kw name="Input Username And Password" owner="browser_keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:07.922854" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<msg time="2025-07-18T13:17:36.489883" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
 <arg>id=username</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:07.922498" elapsed="0.079619"/>
+<status status="PASS" start="2025-07-18T13:17:36.489667" elapsed="0.103189"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:08.002710" level="INFO">Typing text 'WrongPassword123' into text field 'id=password'.</msg>
+<msg time="2025-07-18T13:17:36.593531" level="INFO">Typing text 'WrongPassword123' into text field 'id=password'.</msg>
 <arg>id=password</arg>
 <arg>${password}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:08.002413" elapsed="0.025890"/>
+<status status="PASS" start="2025-07-18T13:17:36.593121" elapsed="0.023462"/>
 </kw>
 <arg>tomsmith</arg>
 <arg>WrongPassword123</arg>
-<status status="PASS" start="2025-07-17T15:16:07.921776" elapsed="0.106680"/>
+<status status="PASS" start="2025-07-18T13:17:36.489398" elapsed="0.127298"/>
 </kw>
 <kw name="Click Login Button" owner="browser_keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:08.029142" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<msg time="2025-07-18T13:17:36.617354" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
 <arg>xpath=//button[@type='submit']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:08.028993" elapsed="0.556952"/>
+<status status="PASS" start="2025-07-18T13:17:36.617193" elapsed="0.582469"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:16:08.028757" elapsed="0.557455"/>
+<status status="PASS" start="2025-07-18T13:17:36.616941" elapsed="0.582836"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:08.657208" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-07-17T15:16:08.657400" level="FAIL">Page should have contained text 'Your username is invalid!' but did not.</msg>
-<arg>Your username is invalid!</arg>
+<msg time="2025-07-18T13:17:37.213290" level="INFO">Current page contains text 'Your password is invalid!'.</msg>
+<arg>Your password is invalid!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="FAIL" start="2025-07-17T15:16:08.586484" elapsed="0.071771">Page should have contained text 'Your username is invalid!' but did not.</status>
+<status status="PASS" start="2025-07-18T13:17:37.200018" elapsed="0.013454"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-07-17T15:16:08.658610" elapsed="0.000059"/>
+<status status="PASS" start="2025-07-18T13:17:37.214053" elapsed="1.098294"/>
 </kw>
 <doc>Verifies REQ-LOGIN-003: Login fails if password is incorrect</doc>
 <tag>login</tag>
 <tag>negative</tag>
 <tag>REQ-LOGIN-003</tag>
-<status status="FAIL" start="2025-07-17T15:15:58.420606" elapsed="10.238382">Page should have contained text 'Your username is invalid!' but did not.</status>
+<status status="PASS" start="2025-07-18T13:17:27.828260" elapsed="10.484369"/>
 </test>
-<test id="s1-s1-t4" name="Invalid Login Test - Empty password" line="35">
+<test id="s1-s2-t4" name="Invalid Login Test - Empty password" line="35">
 <kw name="Open Browser to Login Page" owner="browser_keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:08.660313" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<msg time="2025-07-17T15:16:08.714123" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:38.313693" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:17:38.357956" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-17T15:16:08.660084" elapsed="10.629086"/>
+<status status="PASS" start="2025-07-18T13:17:38.313514" elapsed="9.995618"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-17T15:16:19.289521" elapsed="0.274604"/>
+<status status="PASS" start="2025-07-18T13:17:48.309323" elapsed="0.276236"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:16:08.659822" elapsed="10.904445"/>
+<status status="PASS" start="2025-07-18T13:17:38.313270" elapsed="10.272417"/>
 </kw>
 <kw name="Input Username And Password" owner="browser_keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:19.565016" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<msg time="2025-07-18T13:17:48.586626" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
 <arg>id=username</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:19.564800" elapsed="0.080709"/>
+<status status="PASS" start="2025-07-18T13:17:48.586413" elapsed="0.088387"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:19.646234" level="INFO">Typing text '' into text field 'id=password'.</msg>
+<msg time="2025-07-18T13:17:48.675498" level="INFO">Typing text '' into text field 'id=password'.</msg>
 <arg>id=password</arg>
 <arg>${password}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:19.645859" elapsed="0.019390"/>
+<status status="PASS" start="2025-07-18T13:17:48.675096" elapsed="0.024752"/>
 </kw>
 <arg>tomsmith</arg>
 <arg>${EMPTY}</arg>
-<status status="PASS" start="2025-07-17T15:16:19.564499" elapsed="0.101018"/>
+<status status="PASS" start="2025-07-18T13:17:48.586059" elapsed="0.113987"/>
 </kw>
 <kw name="Click Login Button" owner="browser_keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:19.666073" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<msg time="2025-07-18T13:17:48.701046" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
 <arg>xpath=//button[@type='submit']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:19.665938" elapsed="0.621045"/>
+<status status="PASS" start="2025-07-18T13:17:48.700850" elapsed="0.816368"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:16:19.665720" elapsed="0.621396"/>
+<status status="PASS" start="2025-07-18T13:17:48.700512" elapsed="0.817113"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:20.362091" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2025-07-17T15:16:20.362350" level="FAIL">Page should have contained text 'Your username is invalid!' but did not.</msg>
-<arg>Your username is invalid!</arg>
+<msg time="2025-07-18T13:17:49.540275" level="INFO">Current page contains text 'Your password is invalid!'.</msg>
+<arg>Your password is invalid!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="FAIL" start="2025-07-17T15:16:20.287381" elapsed="0.075343">Page should have contained text 'Your username is invalid!' but did not.</status>
+<status status="PASS" start="2025-07-18T13:17:49.518088" elapsed="0.022327"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="NOT RUN" start="2025-07-17T15:16:20.363040" elapsed="0.000045"/>
+<status status="PASS" start="2025-07-18T13:17:49.540779" elapsed="0.676659"/>
 </kw>
 <doc>Verifies REQ-LOGIN-004: Login fails if password is empty</doc>
 <tag>login</tag>
 <tag>negative</tag>
 <tag>REQ-LOGIN-004</tag>
-<status status="FAIL" start="2025-07-17T15:16:08.659404" elapsed="11.703963">Page should have contained text 'Your username is invalid!' but did not.</status>
+<status status="PASS" start="2025-07-18T13:17:38.312888" elapsed="11.904816"/>
 </test>
-<test id="s1-s1-t5" name="Invalid Login Test - Empty Both Fields" line="44">
+<test id="s1-s2-t5" name="Invalid Login Test - Empty Both Fields" line="44">
 <kw name="Open Browser to Login Page" owner="browser_keywords">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:20.364866" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
-<msg time="2025-07-17T15:16:20.412551" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:50.218910" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:17:50.286680" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
 <arg>${LOGIN_URL}</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-07-17T15:16:20.364573" elapsed="8.387272"/>
+<status status="PASS" start="2025-07-18T13:17:50.218732" elapsed="10.112688"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-07-17T15:16:28.752090" elapsed="0.289258"/>
+<status status="PASS" start="2025-07-18T13:18:00.331684" elapsed="0.307798"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:16:20.364196" elapsed="8.677315"/>
+<status status="PASS" start="2025-07-18T13:17:50.218514" elapsed="10.421249"/>
 </kw>
 <kw name="Input Username And Password" owner="browser_keywords">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:29.042756" level="INFO">Typing text '' into text field 'id=username'.</msg>
+<msg time="2025-07-18T13:18:00.640803" level="INFO">Typing text '' into text field 'id=username'.</msg>
 <arg>id=username</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:29.042457" elapsed="0.068698"/>
+<status status="PASS" start="2025-07-18T13:18:00.640596" elapsed="0.068477"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:29.111654" level="INFO">Typing text '' into text field 'id=password'.</msg>
+<msg time="2025-07-18T13:18:00.709963" level="INFO">Typing text '' into text field 'id=password'.</msg>
 <arg>id=password</arg>
 <arg>${password}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:29.111360" elapsed="0.016891"/>
+<status status="PASS" start="2025-07-18T13:18:00.709387" elapsed="0.081876"/>
 </kw>
 <arg>${EMPTY}</arg>
 <arg>${EMPTY}</arg>
-<status status="PASS" start="2025-07-17T15:16:29.041857" elapsed="0.086558"/>
+<status status="PASS" start="2025-07-18T13:18:00.640265" elapsed="0.151163"/>
 </kw>
 <kw name="Click Login Button" owner="browser_keywords">
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:29.129857" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<msg time="2025-07-18T13:18:00.792390" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
 <arg>xpath=//button[@type='submit']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-07-17T15:16:29.129358" elapsed="0.480640"/>
+<status status="PASS" start="2025-07-18T13:18:00.792202" elapsed="0.538080"/>
 </kw>
-<status status="PASS" start="2025-07-17T15:16:29.128852" elapsed="0.481277"/>
+<status status="PASS" start="2025-07-18T13:18:00.791727" elapsed="0.538706"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-07-17T15:16:29.618617" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
+<msg time="2025-07-18T13:18:01.336735" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
 <arg>Your username is invalid!</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-07-17T15:16:29.610450" elapsed="0.008260"/>
+<status status="PASS" start="2025-07-18T13:18:01.330708" elapsed="0.006123"/>
 </kw>
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-07-17T15:16:29.618926" elapsed="0.783200"/>
+<status status="PASS" start="2025-07-18T13:18:01.337068" elapsed="0.807746"/>
 </kw>
 <doc>Verifies REQ-LOGIN-005: Login fails if both username and password are empty</doc>
 <tag>login</tag>
 <tag>negative</tag>
 <tag>REQ-LOGIN-005</tag>
-<status status="PASS" start="2025-07-17T15:16:20.363649" elapsed="10.038840"/>
+<status status="PASS" start="2025-07-18T13:17:50.218003" elapsed="11.927071"/>
 </test>
-<status status="FAIL" start="2025-07-17T15:15:34.834335" elapsed="55.568704"/>
+<test id="s1-s2-t6" name="Invalid Login Test - SQL Injection" line="53">
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:02.146226" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:18:02.188379" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:18:02.146018" elapsed="9.557732"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:18:11.703991" elapsed="0.262679"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:02.145767" elapsed="9.821005"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:11.967402" level="INFO">Typing text '' OR '1'='1' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:11.967237" elapsed="0.124737"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:12.095363" level="INFO">Typing text '' OR '1'='1' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:12.092330" elapsed="0.039064"/>
+</kw>
+<arg>' OR '1'='1</arg>
+<arg>' OR '1'='1</arg>
+<status status="PASS" start="2025-07-18T13:18:11.966987" elapsed="0.164701"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:12.133111" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:12.132746" elapsed="0.755248"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:12.132253" elapsed="0.755898"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:12.896695" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
+<arg>Your username is invalid!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-18T13:18:12.888363" elapsed="0.008462"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:18:12.897034" elapsed="0.789821"/>
+</kw>
+<doc>Verifies REQ-LOGIN-006: Login fails with SQL Injection input</doc>
+<tag>login</tag>
+<tag>negative</tag>
+<tag>REQ-LOGIN-006</tag>
+<status status="PASS" start="2025-07-18T13:18:02.145331" elapsed="11.541746"/>
+</test>
+<test id="s1-s2-t7" name="Invalid Login Test - Special characters in username" line="62">
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:13.688606" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:18:13.732724" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:18:13.688382" elapsed="10.561328"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:18:24.250008" elapsed="0.310496"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:13.688116" elapsed="10.872524"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:24.561564" level="INFO">Typing text 'tomsmith$' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:24.561300" elapsed="0.089482"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:24.651385" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:24.651031" elapsed="0.022191"/>
+</kw>
+<arg>tomsmith$</arg>
+<arg>SuperSecretPassword!</arg>
+<status status="PASS" start="2025-07-18T13:18:24.560942" elapsed="0.112460"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:24.675617" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:24.674083" elapsed="0.566624"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:24.673742" elapsed="0.567156"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:25.256040" level="INFO">Current page contains text 'Your username is invalid!'.</msg>
+<arg>Your username is invalid!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-18T13:18:25.241333" elapsed="0.014874"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:18:25.256514" elapsed="0.897822"/>
+</kw>
+<doc>Verifies REQ-LOGIN-007: Login fails if username is not wrong or with special characters</doc>
+<tag>login</tag>
+<tag>negative</tag>
+<tag>REQ-LOGIN-007</tag>
+<status status="PASS" start="2025-07-18T13:18:13.687294" elapsed="12.467383"/>
+</test>
+<test id="s1-s2-t8" name="Valid Login Test - Logout works correctly" line="71">
+<kw name="Open Browser to Login Page" owner="browser_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:26.155942" level="INFO">Opening browser 'firefox' to base url 'https://the-internet.herokuapp.com/login'.</msg>
+<msg time="2025-07-18T13:18:26.200297" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<arg>${LOGIN_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-07-18T13:18:26.155738" elapsed="12.224182"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-07-18T13:18:38.380137" elapsed="0.298578"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:26.155489" elapsed="12.523375"/>
+</kw>
+<kw name="Input Username And Password" owner="browser_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:38.679769" level="INFO">Typing text 'tomsmith' into text field 'id=username'.</msg>
+<arg>id=username</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:38.679548" elapsed="0.089795"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:38.769800" level="INFO">Typing text 'SuperSecretPassword!' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:38.769535" elapsed="0.028423"/>
+</kw>
+<arg>tomsmith</arg>
+<arg>SuperSecretPassword!</arg>
+<status status="PASS" start="2025-07-18T13:18:38.679220" elapsed="0.118874"/>
+</kw>
+<kw name="Click Login Button" owner="browser_keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:38.799642" level="INFO">Clicking button 'xpath=//button[@type='submit']'.</msg>
+<arg>xpath=//button[@type='submit']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:38.799378" elapsed="0.842734"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:38.798673" elapsed="0.843621"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:39.697226" level="INFO">Current page contains text 'You logged into a secure area!'.</msg>
+<arg>You logged into a secure area!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-18T13:18:39.642530" elapsed="0.054935"/>
+</kw>
+<kw name="CLick Logout Button" owner="browser_keywords">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:39.699059" level="INFO">Clicking element 'xpath=//a[@href='/logout']'.</msg>
+<arg>xpath=//a[@href='/logout']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-07-18T13:18:39.698466" elapsed="0.860372"/>
+</kw>
+<status status="PASS" start="2025-07-18T13:18:39.698067" elapsed="0.861020"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-07-18T13:18:40.568498" level="INFO">Current page contains text 'You logged out of the secure area!'.</msg>
+<arg>You logged out of the secure area!</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-07-18T13:18:40.559380" elapsed="0.009207"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-07-18T13:18:40.568867" elapsed="2.749623"/>
+</kw>
+<doc>Verifies REQ-LOGIN-008: Logout works correctly and redirects to login page</doc>
+<tag>logout</tag>
+<tag>positive</tag>
+<tag>REQ-LOGIN-008</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2025-07-18T13:18:26.155059" elapsed="17.163702"/>
+</test>
+<status status="PASS" start="2025-07-18T13:17:02.776264" elapsed="100.542915"/>
 </suite>
-<status status="FAIL" start="2025-07-17T15:15:34.821699" elapsed="55.581840"/>
+<status status="PASS" start="2025-07-18T13:15:57.035513" elapsed="166.284103"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="2" skip="0">All Tests</stat>
+<stat pass="9" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="3" fail="2" skip="0">login</stat>
-<stat pass="2" fail="2" skip="0">negative</stat>
+<stat pass="7" fail="0" skip="0">login</stat>
+<stat pass="1" fail="0" skip="0">logout</stat>
+<stat pass="6" fail="0" skip="0">negative</stat>
+<stat pass="2" fail="0" skip="0">positive</stat>
 <stat pass="1" fail="0" skip="0">REQ-LOGIN-001</stat>
 <stat pass="1" fail="0" skip="0">REQ-LOGIN-002</stat>
-<stat pass="0" fail="1" skip="0">REQ-LOGIN-003</stat>
-<stat pass="0" fail="1" skip="0">REQ-LOGIN-004</stat>
+<stat pass="1" fail="0" skip="0">REQ-LOGIN-003</stat>
+<stat pass="1" fail="0" skip="0">REQ-LOGIN-004</stat>
 <stat pass="1" fail="0" skip="0">REQ-LOGIN-005</stat>
-<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="1" fail="0" skip="0">REQ-LOGIN-006</stat>
+<stat pass="1" fail="0" skip="0">REQ-LOGIN-007</stat>
+<stat pass="1" fail="0" skip="0">REQ-LOGIN-008</stat>
+<stat pass="2" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="Tests" id="s1" pass="3" fail="2" skip="0">Tests</stat>
-<stat name="Login Tests" id="s1-s1" pass="3" fail="2" skip="0">Tests.Login Tests</stat>
+<stat name="Tests" id="s1" pass="9" fail="0" skip="0">Tests</stat>
+<stat name="Data Driven Login" id="s1-s1" pass="1" fail="0" skip="0">Tests.Data Driven Login</stat>
+<stat name="Login Tests" id="s1-s2" pass="8" fail="0" skip="0">Tests.Login Tests</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-07-17T15:15:35.505499" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
-<msg time="2025-07-17T15:15:46.164979" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
-<msg time="2025-07-17T15:15:58.464530" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
-<msg time="2025-07-17T15:16:08.714123" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
-<msg time="2025-07-17T15:16:20.412551" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:15:57.190887" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:16:16.134152" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:16:24.585493" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:16:36.874006" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:16:48.517681" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:02.838422" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:14.796621" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:27.895139" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:38.357956" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:17:50.286680" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:18:02.188379" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:18:13.732724" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
+<msg time="2025-07-18T13:18:26.200297" level="WARN">The geckodriver version (0.32.0) detected in PATH at /usr/bin/geckodriver might not be compatible with the detected firefox version (140.0); currently, geckodriver 0.36.0 is recommended for firefox 140.*, so it is advised to delete the driver in PATH and retry</msg>
 </errors>
 </robot>

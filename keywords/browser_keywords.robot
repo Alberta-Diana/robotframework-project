@@ -15,3 +15,6 @@ Input Username And Password
 
 Click Login Button
 	Click Button	xpath=//button[@type='submit']
+
+CLick Logout Button
+	Click Element 	xpath=//a[@href='/logout']
